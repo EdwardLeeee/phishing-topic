@@ -81,6 +81,7 @@ sudo auditctl -W /path/to/file1.c -k file1_c_edit
 ## 路由器設定
 ### 要把欲使用防火牆打開
 > 80 是 HTTP 的 port 
+
 > 443 是 HTTPS 的 port 
 
 ```
@@ -93,6 +94,7 @@ sudo ufw allow 443
 192.168.0.1
 ```
 2.輸入帳號 `admin`（密碼留白）
+
 3.選擇進階->虛擬伺服器
 
 ## nginx
