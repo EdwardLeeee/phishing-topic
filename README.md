@@ -19,6 +19,10 @@ vim example.tex
 ```
 xelatex example.tex
 ```
+### open pdf
+```
+evince file_name.pdf
+```
 ## Neo4j
 [說明網站](https://www.virtono.com/community/tutorial-how-to/how-to-install-neo4j-on-ubuntu-22-04/)
 ### 安裝
