@@ -42,6 +42,11 @@ sudo systemctl status neo4j
 ```
 sudo systemctl start neo4j
 ```
+打開圖形化界面
+> 在瀏覽器輸入
+```
+localhost:7474
+```
 
 ## auditd
 ### 安裝與啟動
