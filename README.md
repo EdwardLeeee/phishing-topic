@@ -1,4 +1,4 @@
-# APT-attack-defense
+# 專題使用手冊
 ## latex
 
 ### 安裝latex
@@ -71,4 +71,80 @@ sudo auditctl -w /path/to/file1.c -p war -k file1_c_edit
 ### 停止追蹤檔案
 ```
 sudo auditctl -W /path/to/file1.c -k file1_c_edit
+```
+
+## 路由器設定
+### 要把欲使用防火牆打開
+> 80 是 HTTP 的 port 
+> 443 是 HTTPS 的 port 
+
+```
+sudo ufw allow 80
+sudo ufw allow 443
+```
+### 把 router 的 port 打開
+1.登入設定畫面
+```
+192.168.0.1
+```
+2.輸入帳號 `admin`（密碼留白）
+3.選擇進階->虛擬伺服器
+
+## nginx
+### 開機自動啟動
+```
+sudo systemctl enable nginx
+```
+### 開啟
+```
+sudo systemctl start nginx
+```
+### 設定
+#### 申請 SSL certificate
+```
+sudo apt update
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx
+```
+#### 製作設定檔
+```
+vim xxx.conf 
+```
+```nginx
+# HTTP server配置，用於將所有HTTP請求重定向到HTTPS
+server {
+    listen 80;
+    server_name need-a-dentist.publicvm.com;
+
+    # 將所有HTTP請求重定向到HTTPS
+    return 301 https://$host$request_uri;
+}
+
+# HTTPS server配置，代理到Flask應用
+server {
+    listen 443 ssl; # 暫時註釋掉SSL憑證配置，直到憑證生成完成
+    server_name need-a-dentist.publicvm.com;
+
+    # 暫時註釋掉SSL憑證配置，直到憑證生成完成
+    ssl_certificate /etc/letsencrypt/live/need-a-dentist.publicvm.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/need-a-dentist.publicvm.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / {
+        proxy_pass http://localhost:5000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+#### 把設定檔掛到「可用的」站點配置文件
+```
+sudo cp xxx.conf /etc/nginx/sites-available/xxx.conf
+```
+#### 把設定檔掛到「以啟用的」站點配置文件 
+```
+sudo ln -s /etc/nginx/sites-available/xxx.conf /etc/nginx/sites-enabled/
 ```
