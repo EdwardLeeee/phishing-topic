@@ -98,6 +98,10 @@ sudo ufw allow 443
 3.選擇進階->虛擬伺服器
 
 ## nginx
+### 知道本機 WAN IP
+```
+curl ifconfig.me
+```
 ### 開機自動啟動
 ```
 sudo systemctl enable nginx
@@ -152,6 +156,7 @@ server {
 sudo cp xxx.conf /etc/nginx/sites-available/xxx.conf
 ```
 #### 把設定檔掛到「以啟用的」站點配置文件 
+> 不需要掛到特定檔案，到 `/etc/nginx/sites-enabled/` 就可以了
 ```
 sudo ln -s /etc/nginx/sites-available/xxx.conf /etc/nginx/sites-enabled/
 ```
