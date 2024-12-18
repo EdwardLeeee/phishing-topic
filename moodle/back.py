@@ -23,4 +23,4 @@ def index():
 
 if __name__ == '__main__':
     # debug must be fasle , or you can't run it in background
-    app.run(host='0.0.0.0', port=7777,debug='False')
+    app.run(host='0.0.0.0', port=7777,debug=False)
