@@ -8,11 +8,11 @@ import requests
 driver = webdriver.Chrome()
 
 # 打開目標頁面
-url = 'https://moodle3.ntnu.edu.tw/login/index.php'
+url = 'https://iportal.ntnu.edu.tw/ntnu/'
 driver.get(url)
 
 # 等待頁面內容渲染完成
-time.sleep(5)
+# time.sleep(10)
 
 # 獲取渲染後的 HTML
 soup = BeautifulSoup(driver.page_source, 'html.parser')
