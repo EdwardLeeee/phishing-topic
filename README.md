@@ -160,3 +160,8 @@ sudo cp xxx.conf /etc/nginx/sites-available/xxx.conf
 ```
 sudo ln -s /etc/nginx/sites-available/xxx.conf /etc/nginx/sites-enabled/
 ```
+
+### 背景執行
+```
+nohup python3 xxx.py &
+```
