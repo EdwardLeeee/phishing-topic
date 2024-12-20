@@ -75,7 +75,16 @@ nav.navbar ul.navbar-nav .usermenu .login{
 nav.navbar ul.navbar-nav .usermenu .login a{
       color:white;
 }
-
+.fa-user-circle {
+    clear: both; /* 清除浮動影響 */
+    display: inline-block;
+    margin-top: 10px; /* 調整間距 */
+}
+.fa-lock {
+    clear: both; /* 清除浮動影響 */
+    display: inline-block;
+    margin-top: 10px; /* 調整間距 */
+}
 
 </style>
 
@@ -171,8 +180,11 @@ document.body.className += ' jsenabled';
                     <p class="welcome">已經有一個帳號？</p>
 
                     <label for="username" class="sr-only">帳號</label>
-                    <div class="input-group input-group-username" id="yui_3_17_2_1_1734509211635_22">
+                    <div>
+                    	<div class="input-group input-group-username" id="yui_3_17_2_1_1734509211635_22">
+                    	
                         <span class="input-group-addon" id="yui_3_17_2_1_1734509211635_21"><i class="fa fa-user-circle" id="yui_3_17_2_1_1734509211635_20"></i></span>
+                      
                         <input type="text" name="username" id="username" class="form-control" value="" placeholder="帳號">
                     </div>
 
