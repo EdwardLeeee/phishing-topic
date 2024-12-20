@@ -10,6 +10,7 @@
 *.synctex.gz
 *.bbl
 *.blg
+*.txt
 
 Mid_Prospectus.pdf
 Mid_Prospectus.tex
